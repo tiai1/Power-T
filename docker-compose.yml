@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  api:
+    build: ./api
+    image: power-t-api:latest
+    ports:
+      - "8080:8080"
+    environment:
+      - NODE_ENV=production
+      - PORT=8080
+    volumes:
+      - ./api:/usr/src/app:ro
+
+  web:
+    build: ./web
+    image: power-t-web:latest
+    ports:
+      - "3001:3000"
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./web:/usr/src/app:ro
+
+  addin:
+    build: ./addin
+    image: power-t-addin:latest
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./addin:/usr/src/app:ro

@@ -51,3 +51,16 @@ npm start
 - Web app uses Next.js 14 with React 18
 - Add-in uses vanilla JavaScript and Office.js for PowerPoint integration
 - Charts are rendered using the @chartcraft/charts-core package
+
+## Production & Docker
+
+Build the API for production:
+
+```bash
+cd api
+npm ci
+npm run build
+docker build -t power-t-api:latest .
+```
+
+CI is configured under `.github/workflows/ci.yml` to run installs and builds on push/PR to `main`.
